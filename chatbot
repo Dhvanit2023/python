@@ -48,9 +48,9 @@ def main():
             if topic_key in diclist:
                 topic_filename = diclist[topic_key] + '.txt'
                 content = filelod(topic_filename)
-                print(f'Waiting for file loading {topic}')
+                print(f'Waiting for file loading {topic_filename}')
                 time.sleep(3)
-                bot(content,topic)
+                bot(content,topic_filename)
                 
             else:
                 print("Invalid option. Please select a valid topic number.")
