@@ -1,0 +1,60 @@
+//here txt file to chatbot work
+import time
+diclist = {1: 'data', 2: 'car', 3: 'sport', 4: 'ai', 5: 'medical'}
+
+def filelod(topic_filename):
+    try:
+        with open(topic_filename, 'r') as file:
+            content = file.readlines()
+        content_dict = {}
+        for line in content:
+            if ':' in line:
+                q, a = line.strip().split(':', 1)
+                content_dict[q.strip().lower()] = a.strip()
+        return content_dict
+    except FileNotFoundError:
+        print("Sorry, the file for this topic was not found.")
+        return {}
+def bot(content_dict,flie):
+    while True:
+        question = input(f"Ask any question {flie} (or type 'exit' to quit):=> ").strip().lower()
+
+        if question == "exit":
+            print("Bot...=>Thanks")
+            break
+
+        if question in content_dict:
+            print("Bot Thinking...")
+            time.sleep(2)
+            print("Bot...=>",content_dict[question])
+        else:
+            print("Bot...=>Sorry, I don't have an answer for that.")
+
+def main():
+    print("Welcome to my chatbot!")
+    print("Available topics:")
+    for key, topic in diclist.items():
+        print(f"{key}: {topic}")
+
+    while True:
+        userin = input("\nEnter the number of a topic from the list (or type 'exit' to quit): ")
+        
+        if userin.lower() == 'exit':
+            print("Thank you for using the chatbot. Goodbye!")
+            break
+        
+        elif userin.isdigit():
+            topic_key = int(userin)
+            if topic_key in diclist:
+                topic_filename = diclist[topic_key] + '.txt'
+                content = filelod(topic_filename)
+                print(f'Waiting for file loading {topic}')
+                time.sleep(3)
+                bot(content,topic)
+                
+            else:
+                print("Invalid option. Please select a valid topic number.")
+        else:
+            print("Invalid input. Please enter a number or 'exit'.")
+
+main()
