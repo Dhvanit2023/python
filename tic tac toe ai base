@@ -85,6 +85,7 @@ def best_move_ai(board):
          
 def main():
     while True:
+    clear()
         a=input("'exit' for brak and 1 for start you 2 for ai :=> ")
         print("welcome  .. ")
         print("User X and ai O ")
