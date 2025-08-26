@@ -20,7 +20,7 @@ def is_winned(board,player):
                 [0,3,6],[1,4,7],[2,5,8],
                 [0,4,8],[2,4,6]
                 ]
-   
+
     for i in conditions:
         if board[i[0]] == board[i[1]]==board[i[2]]==player:
             return True
@@ -52,7 +52,7 @@ def minmax(board,ai_move,deft):
                 board[i]=" "
                 if(score>=best_score):
                     best_score=score
-                   
+
         return best_score      
     else:
         best_score=2
@@ -63,13 +63,13 @@ def minmax(board,ai_move,deft):
                 board[i]=" "
                 if(score<=best_score):
                     best_score=score
-                   
+
         return best_score      
 
 def best_move_ai(board):
     move=0
     best_score=-2
-   
+
     for i in range(9):
         if(board[i]==' '):
            board[i]="O"
@@ -82,10 +82,14 @@ def best_move_ai(board):
 
 
 
-         
+
 def main():
+    userscore=0
+    aiscore=0
     while True:
-    clear()
+        print("ai score is",aiscore)
+        print("user score is",userscore)
+        clear()
         a=input("'exit' for brak and 1 for start you 2 for ai :=> ")
         print("welcome  .. ")
         print("User X and ai O ")
@@ -98,11 +102,12 @@ def main():
                     break
                 if(is_winned(board, 'X')):
                     print("You Win!..")
+                    userscore+=1
                     break
                 print("Ai thinking...")
                 move=best_move_ai(board)
                 board[move]="O"
-           
+
                 if(is_ful(board)):
                     print("tie .. !")
                     clear()
@@ -110,11 +115,12 @@ def main():
                 if(is_winned(board, 'O')):
                     print_board()
                     print("AI Win!..")
+                    aiscore+=1
                     clear()
                     break
         if(a=='2'):
             while True:
-                 
+
                 print("Ai thinking...")
                 move=best_move_ai(board)
                 board[move]="O"
@@ -126,6 +132,7 @@ def main():
                 if(is_winned(board, 'O')):
                     #print_board()
                     print("AI Win!..")
+                    aiscore+=1
                     clear()
                     break
                 usermove()
@@ -134,10 +141,11 @@ def main():
                     break
                 if(is_winned(board, 'X')):
                     print("You Win!..")
+                    userscore+=1
                     break
-               
+
         elif(a=='exit'):
             print("Thank for useing")
             break
-   
+
 main()    
