@@ -33,6 +33,7 @@ def main():
     aiscore = 0
     dic = {1: 'Stone', 2: 'Paper', 3: 'Scissor'}
     print("welcome my Stone Paper Scissor game")
+    print("Enter 0 for exit")
     while True:
         print(f"User score : {userscore}")
         print(f"Ai score   : {aiscore}")
