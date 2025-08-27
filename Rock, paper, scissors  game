@@ -1,0 +1,51 @@
+import random
+
+def bot():
+    a = random.randint(1, 3)   
+    return a           
+
+def win(a, b, userscore, aiscore):
+    if a == b:
+        print("match tie!!")
+    elif a == 1 and b == 2:
+        aiscore += 1  
+        print("ai win")
+    elif a == 1 and b == 3:
+        userscore += 1
+        print("you win")
+    elif a == 2 and b == 1:
+        userscore += 1
+        print("you win")
+    elif a == 2 and b == 3:
+        aiscore += 1
+        print("ai win")
+    elif a == 3 and b == 1:
+        aiscore += 1
+        print("ai win")
+    elif a == 3 and b == 2:
+        userscore += 1
+        print("you win")
+    print("=================")
+    return userscore, aiscore  
+
+def main():
+    userscore = 0
+    aiscore = 0
+    dic = {1: 'Stone', 2: 'Paper', 3: 'Scissor'}
+    print("welcome my Stone Paper Scissor game")
+    while True:
+        print(f"User score : {userscore}")
+        print(f"Ai score   : {aiscore}")
+    
+        print("Enter 1 for Stone \n2 for paper \n3 for Scissor")
+        i = int(input("Enter any one option:"))
+        if i == 0:
+            print("===Thank you for using===")
+            break
+        print(f"you select {dic[i]}")
+        ba = bot()
+        print(f"bot select {dic[ba]}")
+    
+        userscore, aiscore = win(i, ba, userscore, aiscore)  
+
+main()
