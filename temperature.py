@@ -10,7 +10,7 @@ def speak_text(text,city):
     engine.runAndWait()
     
 def main():
-    api_key = "ee537900e6312a194b4175aa6e96262f"  
+    api_key = "ee537900e6312a194b4175aa6e962xxx"  
     city = input("Enter the name of the city\n")
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     response = requests.get(url)
