@@ -1,4 +1,4 @@
-//here txt file to chatbot work
+#here txt file to chatbot work
 import time
 diclist = {1: 'data', 2: 'car', 3: 'sport', 4: 'ai', 5: 'medical'}
 
